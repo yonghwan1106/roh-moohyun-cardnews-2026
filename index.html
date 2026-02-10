@@ -3,39 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>다시 보는 노무현 정신 - 카드뉴스</title>
+<title>이 말, 오늘도 봤죠? - 카드뉴스</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Montserrat:wght@800;900&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #F5C518;
-  --gold-deep: #D4A510;
-  --gold-glow: rgba(245, 197, 24, 0.15);
-  --teal: #4ECDC4;
-  --teal-deep: #3ABAB2;
-  --teal-glow: rgba(78, 205, 196, 0.12);
-  --navy: #1B2838;
-  --navy-mid: #243447;
-  --navy-light: #2C3E50;
-  --cream: #FAF8F3;
-  --cream-warm: #F5F0E8;
-  --warm-gray: #E8E4DE;
-  --text-dark: #1a1a1a;
-  --text-body: #4a4a4a;
-  --text-muted: #8a8a8a;
-  --red: #E74C3C;
-  --red-deep: #C0392B;
-  --sans: 'Noto Sans KR', sans-serif;
-  --serif: 'Noto Serif KR', serif;
+  --hot-orange: #FF3D00;
+  --electric-yellow: #FFEB3B;
+  --neon-mint: #00E5A0;
+  --pure-black: #111111;
+  --off-white: #FAFAFA;
+  --deep-charcoal: #1A1A1A;
+  --title: 'Black Han Sans', sans-serif;
+  --body: 'Noto Sans KR', sans-serif;
+  --number: 'Montserrat', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scrollbar-width: none; -ms-overflow-style: none; }
 html::-webkit-scrollbar { display: none; }
 body {
-  font-family: var(--sans);
-  background: #111;
+  font-family: var(--body);
+  background: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,1222 +40,700 @@ body {
   flex-shrink: 0;
 }
 
-/* Grain texture overlay for depth */
-.grain::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.035;
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.06) 0%, transparent 45%);
-  pointer-events: none;
-  z-index: 1;
+/* Highlight underline utility */
+.hl {
+  background: linear-gradient(180deg, transparent 55%, var(--electric-yellow) 55%);
+  padding: 0 6px;
 }
-.grain > * { position: relative; z-index: 2; }
+.hl-orange {
+  background: linear-gradient(180deg, transparent 55%, var(--hot-orange) 55%);
+  padding: 0 6px;
+}
 
-/* ============================
-   SLIDE 1: 표지
-   ============================ */
+/* ========================================
+   SLIDE 1: HOOK - 혐오 댓글 스캐터
+   ======================================== */
 #slide-1 {
-  background:
-    radial-gradient(ellipse at 30% 70%, rgba(78, 205, 196, 0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(245, 197, 24, 0.08) 0%, transparent 40%),
-    linear-gradient(155deg, #0f1922 0%, #1B2838 35%, #1e3545 60%, #1B2838 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
+  background: var(--pure-black);
 }
 
-#slide-1 .diagonal-accent {
+#slide-1 .hate {
   position: absolute;
-  top: -200px;
-  right: -100px;
-  width: 500px;
-  height: 1800px;
-  background: linear-gradient(180deg, rgba(245,197,24,0.06) 0%, rgba(245,197,24,0.03) 50%, transparent 100%);
-  transform: rotate(-15deg);
-  pointer-events: none;
+  font-family: var(--body);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  user-select: none;
 }
+#slide-1 .hate.bright { color: rgba(255, 255, 255, 0.75); }
+#slide-1 .hate.dim { color: rgba(255, 255, 255, 0.25); }
+#slide-1 .hate.orange { color: rgba(255, 61, 0, 0.6); }
+#slide-1 .hate.yellow { color: rgba(255, 235, 59, 0.5); }
 
-#slide-1 .top-line {
+#slide-1 .hook-box {
   position: absolute;
-  top: 90px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: var(--gold);
-}
-
-#slide-1 .corner-frame {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-}
-#slide-1 .corner-frame.tl { top: 50px; left: 50px; border-top: 2px solid rgba(245,197,24,0.35); border-left: 2px solid rgba(245,197,24,0.35); }
-#slide-1 .corner-frame.br { bottom: 50px; right: 50px; border-bottom: 2px solid rgba(78,205,196,0.3); border-right: 2px solid rgba(78,205,196,0.3); }
-
-#slide-1 .main-title {
-  font-size: 82px;
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -3px;
-  margin-bottom: 35px;
-  text-shadow: 0 4px 30px rgba(0,0,0,0.4);
-}
-#slide-1 .main-title .highlight {
-  color: var(--gold);
-  text-shadow: 0 0 60px rgba(245,197,24,0.3), 0 4px 30px rgba(0,0,0,0.4);
-}
-
-#slide-1 .sub-title {
-  font-family: var(--serif);
-  font-size: 30px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 12px;
-  margin-bottom: 100px;
-}
-
-#slide-1 .divider-bar {
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--teal));
-  margin-bottom: 35px;
-}
-
-#slide-1 .foundation {
-  font-size: 16px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 6px;
-}
-
-/* ============================
-   SLIDE 2: 인권변호사 노무현
-   ============================ */
-#slide-2 {
-  background: var(--cream);
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
-
-#slide-2 .accent-strip {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 10px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 50%, var(--teal) 100%);
-}
-
-#slide-2 .year-watermark {
-  position: absolute;
-  top: 50px;
-  left: 60px;
-  font-size: 160px;
-  font-weight: 900;
-  color: rgba(245, 197, 24, 0.08);
-  letter-spacing: -6px;
-  line-height: 1;
-}
-
-#slide-2 .content {
-  padding: 80px 90px 70px 90px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#slide-2 .tag {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--navy);
-  font-size: 16px;
-  font-weight: 700;
-  padding: 10px 26px;
-  border-radius: 30px;
-  width: fit-content;
-  letter-spacing: 1px;
-}
-
-#slide-2 .title {
-  font-size: 62px;
-  font-weight: 900;
-  color: var(--navy);
-  line-height: 1.25;
-  letter-spacing: -2px;
-}
-
-#slide-2 .desc {
-  font-size: 26px;
-  font-weight: 400;
-  color: var(--text-body);
-  line-height: 1.8;
-  border-left: 4px solid var(--teal);
-  padding-left: 28px;
-}
-
-#slide-2 .context-box {
-  background: rgba(78, 205, 196, 0.06);
-  border-radius: 16px;
-  padding: 38px 42px;
-  border: 1px solid rgba(78, 205, 196, 0.15);
-  border-left: 4px solid var(--teal);
-}
-#slide-2 .context-box h4 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 14px;
-}
-#slide-2 .context-box p {
-  font-size: 18px;
-  color: #666;
-  line-height: 1.75;
-  margin-bottom: 10px;
-}
-#slide-2 .context-box p:last-child { margin-bottom: 0; }
-
-#slide-2 .quote-block {
-  background: var(--navy);
-  color: #fff;
-  padding: 50px 55px;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-}
-#slide-2 .quote-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold), var(--teal));
-}
-#slide-2 .quote-block p {
-  font-family: var(--serif);
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: -0.5px;
-}
-#slide-2 .quote-block .watermark {
-  position: absolute;
-  bottom: -10px;
-  right: 30px;
-  font-size: 120px;
-  opacity: 0.06;
-  font-weight: 900;
-}
-
-/* ============================
-   SLIDE 3: 핵심 명언
-   ============================ */
-#slide-3 {
-  background:
-    radial-gradient(ellipse at 50% 40%, #fcd34d 0%, var(--gold) 50%, var(--gold-deep) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 120px 100px;
-  text-align: center;
-}
-
-#slide-3 .deco-corner {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-}
-#slide-3 .deco-corner.tr { top: 50px; right: 50px; border-top: 3px solid rgba(44,62,80,0.12); border-right: 3px solid rgba(44,62,80,0.12); }
-#slide-3 .deco-corner.bl { bottom: 50px; left: 50px; border-bottom: 3px solid rgba(44,62,80,0.12); border-left: 3px solid rgba(44,62,80,0.12); }
-
-#slide-3 .quote-mark {
-  font-size: 180px;
-  color: rgba(44, 62, 80, 0.12);
-  font-weight: 900;
-  line-height: 0.5;
-  margin-bottom: 60px;
-}
-
-#slide-3 .quote-text {
-  font-family: var(--serif);
-  font-size: 52px;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1.7;
-  margin-bottom: 60px;
-  max-width: 880px;
-  word-break: keep-all;
-  letter-spacing: -1px;
-}
-
-#slide-3 .divider {
-  width: 80px;
-  height: 4px;
-  background: var(--navy);
-  margin-bottom: 40px;
-  opacity: 0.5;
-}
-
-#slide-3 .source {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
-  color: rgba(44, 62, 80, 0.6);
-}
-
-/* ============================
-   SLIDE 4: 차별 없는 나라를 꿈꾸다
-   ============================ */
-#slide-4 {
-  background:
-    radial-gradient(ellipse at 80% 0%, rgba(78,205,196,0.08) 0%, transparent 50%),
-    linear-gradient(180deg, #FFFFFF 0%, #f0f7f6 50%, #e4f3f1 100%);
-  display: flex;
-  flex-direction: column;
-  padding: 80px 75px;
-}
-
-#slide-4 .header {
-  margin-bottom: 50px;
-}
-
-#slide-4 .accent-bar {
-  width: 50px;
-  height: 5px;
-  background: linear-gradient(90deg, var(--teal), var(--teal-deep));
-  margin-bottom: 35px;
-  border-radius: 3px;
-}
-
-#slide-4 .title {
-  font-size: 54px;
-  font-weight: 900;
-  color: var(--navy);
-  line-height: 1.3;
-  letter-spacing: -2px;
-  margin-bottom: 14px;
-}
-
-#slide-4 .subtitle {
-  font-size: 22px;
-  color: var(--text-muted);
-  font-weight: 400;
-}
-
-#slide-4 .cards {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  flex: 1;
-  justify-content: center;
-}
-
-#slide-4 .card {
-  background: #FFFFFF;
-  border-radius: 20px;
-  padding: 42px 48px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.04), 0 8px 40px rgba(78,205,196,0.06);
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  border: 1px solid rgba(78,205,196,0.1);
-  transition: none;
-}
-
-#slide-4 .card .icon-wrap {
-  width: 88px;
-  height: 88px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #e8f8f6, #d4f2ee);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  flex-shrink: 0;
-}
-
-#slide-4 .card .text { flex: 1; }
-#slide-4 .card .year-badge {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--navy);
-  font-size: 14px;
-  font-weight: 700;
-  padding: 5px 14px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-}
-#slide-4 .card .text h3 {
-  font-size: 27px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
-}
-#slide-4 .card .text p {
-  font-size: 19px;
-  color: #777;
-  line-height: 1.6;
-}
-
-/* ============================
-   SLIDE 5: 다문화사회의 문을 열다
-   ============================ */
-#slide-5 {
-  background:
-    radial-gradient(ellipse at 0% 50%, rgba(78,205,196,0.08) 0%, transparent 50%),
-    linear-gradient(170deg, #1B2838 0%, #1e3040 50%, #1B2838 100%);
-  display: flex;
-  flex-direction: column;
-  padding: 80px 75px 70px;
-  color: #fff;
-}
-
-#slide-5 .top-accent {
-  width: 45px;
-  height: 5px;
-  background: var(--gold);
-  margin-bottom: 40px;
-  border-radius: 3px;
-}
-
-#slide-5 .title {
-  font-size: 52px;
-  font-weight: 900;
-  line-height: 1.3;
-  letter-spacing: -2px;
-  margin-bottom: 14px;
-}
-
-#slide-5 .subtitle {
-  font-size: 22px;
-  color: rgba(255,255,255,0.45);
-  font-weight: 400;
-  margin-bottom: 55px;
-}
-
-#slide-5 .timeline {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding-left: 30px;
-  position: relative;
-  justify-content: space-evenly;
-}
-
-#slide-5 .timeline::before {
-  content: '';
-  position: absolute;
-  left: 46px;
-  top: 40px;
-  bottom: 40px;
-  width: 3px;
-  background: linear-gradient(180deg, var(--teal), rgba(78,205,196,0.2));
-  border-radius: 2px;
-}
-
-#slide-5 .timeline-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  position: relative;
-}
-
-#slide-5 .timeline-item .dot {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 0 0 8px rgba(245,197,24,0.12), 0 0 20px rgba(245,197,24,0.15);
-}
-
-#slide-5 .timeline-item .year {
-  font-size: 48px;
-  font-weight: 900;
-  color: var(--teal);
-  min-width: 150px;
-  letter-spacing: -2px;
-}
-
-#slide-5 .timeline-item .text { flex: 1; padding-top: 8px; }
-#slide-5 .timeline-item .text h3 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-#slide-5 .timeline-item .text p {
-  font-size: 20px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.65;
-}
-
-#slide-5 .timeline-footer {
-  margin-top: 40px;
-  padding-top: 35px;
-  border-top: 1px solid rgba(245,197,24,0.15);
-  text-align: center;
-}
-#slide-5 .timeline-footer p {
-  font-family: var(--serif);
-  font-size: 22px;
-  color: rgba(255,255,255,0.6);
-  font-style: italic;
-  letter-spacing: -0.3px;
-}
-
-/* ============================
-   SLIDE 6: 민주주의의 핵심 가치
-   ============================ */
-#slide-6 {
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(78,205,196,0.3) 0%, transparent 60%),
-    linear-gradient(160deg, #3ABAB2 0%, #2a7a75 40%, #1B2838 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 75px;
-  text-align: center;
-  color: #fff;
-}
-
-#slide-6 .section-label {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 10px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 50px;
-}
-
-#slide-6 .values-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 60px;
-  width: 100%;
-  max-width: 940px;
-}
-
-#slide-6 .value-card {
-  border-radius: 28px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.12);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  padding: 70px 40px;
-  min-height: 260px;
-}
-
-#slide-6 .value-card .v-icon { font-size: 64px; }
-#slide-6 .value-card .v-label {
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: 6px;
-}
-
-#slide-6 .bottom-quote {
-  max-width: 750px;
-  padding-top: 50px;
-  border-top: 1px solid rgba(245,197,24,0.3);
-}
-#slide-6 .bottom-quote p {
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.75);
-}
-#slide-6 .bottom-quote strong {
-  color: var(--gold);
-  font-weight: 700;
-}
-
-/* ============================
-   SLIDE 7: 지금, 우리 사회의 현실
-   ============================ */
-#slide-7 {
-  background:
-    radial-gradient(ellipse at 80% 20%, rgba(231,76,60,0.06) 0%, transparent 50%),
-    linear-gradient(170deg, #141e2a 0%, #1a2836 50%, #141e2a 100%);
-  display: flex;
-  flex-direction: column;
-  padding: 70px 72px;
-  color: #fff;
-}
-
-#slide-7 .warning-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(231,76,60,0.12);
-  border: 1px solid rgba(231,76,60,0.25);
-  color: var(--red);
-  font-size: 15px;
-  font-weight: 700;
-  padding: 10px 24px;
-  border-radius: 30px;
-  margin-bottom: 30px;
-  width: fit-content;
-  letter-spacing: 0.5px;
-}
-
-#slide-7 .title {
-  font-size: 50px;
-  font-weight: 900;
-  margin-bottom: 45px;
-  line-height: 1.3;
-  letter-spacing: -2px;
-}
-#slide-7 .title .red { color: var(--red); }
-
-#slide-7 .stats {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  flex: 1;
-  justify-content: center;
-}
-
-#slide-7 .stat-card {
-  background: rgba(255,255,255,0.04);
-  border-radius: 18px;
-  padding: 38px 42px;
-  border-left: 4px solid var(--red);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-left: 4px solid var(--red);
-}
-
-#slide-7 .stat-card .label {
-  font-size: 18px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 14px;
-  font-weight: 400;
-}
-
-#slide-7 .stat-card .value {
-  font-size: 46px;
-  font-weight: 900;
-  color: var(--red);
-  margin-bottom: 18px;
-  letter-spacing: -1px;
-}
-
-#slide-7 .stat-card .bar-track {
-  height: 14px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 12px;
-}
-#slide-7 .stat-card .bar-fill {
-  height: 100%;
-  border-radius: 8px;
-  background: linear-gradient(90deg, var(--red), var(--red-deep));
-}
-
-#slide-7 .stat-card .desc {
-  font-size: 17px;
-  color: rgba(255,255,255,0.4);
-}
-
-#slide-7 .people-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-#slide-7 .people-row .person {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-}
-#slide-7 .people-row .person.hit { background: var(--red); }
-#slide-7 .people-row .person.miss { background: rgba(255,255,255,0.06); }
-
-/* ============================
-   SLIDE 8: 왜 지금 다시 노무현인가
-   ============================ */
-#slide-8 {
-  background: linear-gradient(180deg, var(--gold) 0%, #f0d040 25%, #fff 25%, #fff 100%);
-  display: flex;
-  flex-direction: column;
-  padding: 70px 65px;
-}
-
-#slide-8 .title {
+  background: var(--hot-orange);
+  padding: 36px 64px;
+  z-index: 10;
+}
+#slide-1 .hook-box p {
+  font-family: var(--title);
   font-size: 56px;
-  font-weight: 900;
-  color: var(--navy);
-  text-align: center;
-  line-height: 1.25;
-  letter-spacing: -2px;
-  margin-bottom: 50px;
-}
-
-#slide-8 .comparison {
-  display: flex;
-  gap: 30px;
-  flex: 1;
-  align-items: stretch;
-}
-
-#slide-8 .col {
-  flex: 1;
-  border-radius: 24px;
-  padding: 55px 42px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: space-evenly;
-}
-
-#slide-8 .col.problem {
-  background: var(--navy);
   color: #fff;
-}
-#slide-8 .col.solution {
-  background: #fff;
-  color: var(--navy);
-  border: 2px solid #eee;
-}
-
-#slide-8 .col .icon { font-size: 64px; margin-bottom: 30px; }
-
-#slide-8 .col h3 {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 28px;
-  letter-spacing: -0.5px;
-}
-
-#slide-8 .col .items { display: flex; flex-direction: column; gap: 0; width: 100%; }
-#slide-8 .col .items p {
-  font-size: 21px;
-  line-height: 1.5;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(128,128,128,0.12);
-}
-#slide-8 .col .items p:last-child { border-bottom: none; }
-
-#slide-8 .arrow-mid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: var(--gold);
-  font-weight: 900;
-  flex-shrink: 0;
-}
-
-/* ============================
-   SLIDE 9: 우리가 만드는 변화
-   ============================ */
-#slide-9 {
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(78,205,196,0.06) 0%, transparent 50%),
-    linear-gradient(180deg, #f0f7f6 0%, #fff 100%);
-  display: flex;
-  flex-direction: column;
-  padding: 75px 72px;
-}
-
-#slide-9 .header { margin-bottom: 40px; }
-
-#slide-9 .accent-bar {
-  width: 45px;
-  height: 5px;
-  background: linear-gradient(90deg, var(--teal), var(--teal-deep));
-  margin-bottom: 30px;
-  border-radius: 3px;
-}
-#slide-9 .title {
-  font-size: 52px;
-  font-weight: 900;
-  color: var(--navy);
-  margin-bottom: 10px;
-  letter-spacing: -2px;
-}
-#slide-9 .subtitle {
-  font-size: 21px;
-  color: var(--text-muted);
-}
-
-#slide-9 .actions {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-  flex: 1;
-  justify-content: center;
-}
-
-#slide-9 .action-row {
-  background: #fff;
-  border-radius: 20px;
-  padding: 42px 42px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  border: 1px solid rgba(78,205,196,0.08);
-}
-
-#slide-9 .action-row .num {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--teal), var(--teal-deep));
-  color: #fff;
-  font-size: 26px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-#slide-9 .action-row .action-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 38px;
-  flex-shrink: 0;
-}
-#slide-9 .action-row .action-icons .arrow {
-  font-size: 22px;
-  color: var(--teal);
-  font-weight: 700;
-}
-
-#slide-9 .action-row .text { flex: 1; }
-#slide-9 .action-row .text h3 {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 8px;
-  letter-spacing: -0.5px;
-}
-#slide-9 .action-row .text p {
-  font-size: 19px;
-  color: #888;
-  line-height: 1.6;
-}
-
-#slide-9 .action-row .check {
-  font-size: 36px;
-  color: var(--teal);
-  flex-shrink: 0;
-}
-
-#slide-9 .cta-box {
-  text-align: center;
-  padding: 38px 50px;
-  background: linear-gradient(135deg, rgba(78,205,196,0.08), rgba(78,205,196,0.04));
-  border-radius: 18px;
-  margin-top: 35px;
-  border: 1px solid rgba(78,205,196,0.12);
-}
-#slide-9 .cta-box p {
-  font-family: var(--serif);
-  font-size: 22px;
-  color: var(--navy);
-  font-weight: 400;
-  line-height: 1.7;
-  letter-spacing: -0.3px;
-}
-
-/* ============================
-   SLIDE 10: 마무리
-   ============================ */
-#slide-10 {
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(245,197,24,0.06) 0%, transparent 50%),
-    linear-gradient(170deg, #1B2838 0%, #16222e 50%, #1B2838 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 100px 80px;
-}
-
-#slide-10 .corner { position: absolute; width: 55px; height: 55px; }
-#slide-10 .corner.tl { top: 45px; left: 45px; border-top: 2px solid rgba(245,197,24,0.2); border-left: 2px solid rgba(245,197,24,0.2); }
-#slide-10 .corner.tr { top: 45px; right: 45px; border-top: 2px solid rgba(245,197,24,0.2); border-right: 2px solid rgba(245,197,24,0.2); }
-#slide-10 .corner.bl { bottom: 45px; left: 45px; border-bottom: 2px solid rgba(245,197,24,0.2); border-left: 2px solid rgba(245,197,24,0.2); }
-#slide-10 .corner.br { bottom: 45px; right: 45px; border-bottom: 2px solid rgba(245,197,24,0.2); border-right: 2px solid rgba(245,197,24,0.2); }
-
-#slide-10 .bg-char {
-  position: absolute;
-  font-size: 280px;
-  font-weight: 900;
-  color: rgba(255,255,255,0.015);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  letter-spacing: 2px;
   white-space: nowrap;
-  pointer-events: none;
 }
 
-#slide-10 .top-line {
-  width: 180px;
-  height: 4px;
-  background: var(--gold);
-  margin-bottom: 55px;
-}
-
-#slide-10 .slogan {
-  font-size: 84px;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: -3px;
-  margin-bottom: 30px;
-  text-shadow: 0 0 50px rgba(245,197,24,0.2);
-}
-
-#slide-10 .sub {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.7;
-  margin-bottom: 65px;
-  max-width: 600px;
-}
-
-#slide-10 .sep-line {
-  width: 100px;
-  height: 2px;
-  background: rgba(245,197,24,0.3);
-  margin-bottom: 40px;
-}
-
-#slide-10 .info {
-  font-size: 20px;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 16px;
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-#slide-10 .hashtags {
-  font-size: 18px;
-  color: var(--teal);
-  font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 1.8;
-}
-
-#slide-10 .bottom-accent {
+#slide-1 .hook-sub {
   position: absolute;
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold), var(--teal));
-  border-radius: 2px;
+  font-size: 20px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 400;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+/* ========================================
+   SLIDE 2: 현실 - 거대한 6X
+   ======================================== */
+#slide-2 {
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#slide-2 .big-number {
+  font-family: var(--number);
+  font-weight: 900;
+  font-size: 400px;
+  color: var(--hot-orange);
+  line-height: 0.85;
+  letter-spacing: -15px;
+}
+
+#slide-2 .stat-label {
+  font-family: var(--title);
+  font-size: 48px;
+  color: var(--deep-charcoal);
+  margin-top: 30px;
+  letter-spacing: 2px;
+}
+
+#slide-2 .stat-sub {
+  margin-top: 60px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--deep-charcoal);
+}
+#slide-2 .stat-sub .hl {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+#slide-2 .source {
+  position: absolute;
+  bottom: 50px;
+  font-size: 16px;
+  color: #999;
+  font-weight: 400;
+}
+
+/* ========================================
+   SLIDE 3: 전환점
+   ======================================== */
+#slide-3 {
+  background: var(--pure-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px;
+}
+
+#slide-3 .line1 {
+  font-family: var(--title);
+  font-size: 88px;
+  color: var(--electric-yellow);
+  margin-bottom: 40px;
+}
+
+#slide-3 .line2 {
+  font-family: var(--title);
+  font-size: 64px;
+  color: #fff;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+/* ========================================
+   SLIDE 4: 핵심 명언 - 풀블리드 옐로우
+   ======================================== */
+#slide-4 {
+  background: var(--electric-yellow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 90px;
+}
+
+#slide-4 .quote {
+  font-family: var(--title);
+  font-size: 76px;
+  color: var(--pure-black);
+  line-height: 1.45;
+  word-break: keep-all;
+  letter-spacing: -1px;
+}
+
+#slide-4 .quote-source {
+  margin-top: 80px;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+#slide-4 .left-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 100%;
+  background: var(--pure-black);
+}
+
+/* ========================================
+   SLIDE 5: 업적 - 브루탈 박스
+   ======================================== */
+#slide-5 {
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  padding: 80px 75px;
+}
+
+#slide-5 .section-title {
+  font-family: var(--title);
+  font-size: 64px;
+  color: var(--deep-charcoal);
+  margin-bottom: 60px;
+  line-height: 1.3;
+}
+
+#slide-5 .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+
+#slide-5 .card {
+  background: #fff;
+  border: 6px solid var(--pure-black);
+  padding: 44px 48px;
+  position: relative;
+  box-shadow: 10px 10px 0 var(--pure-black);
+}
+#slide-5 .card:nth-child(1) { transform: rotate(-0.8deg); }
+#slide-5 .card:nth-child(2) { transform: rotate(0.5deg); }
+#slide-5 .card:nth-child(3) { transform: rotate(-0.3deg); }
+
+#slide-5 .card .year {
+  font-family: var(--number);
+  font-weight: 900;
+  font-size: 52px;
+  color: var(--hot-orange);
+  margin-bottom: 8px;
+  letter-spacing: -2px;
+}
+
+#slide-5 .card h3 {
+  font-family: var(--title);
+  font-size: 38px;
+  color: var(--deep-charcoal);
+  margin-bottom: 10px;
+}
+
+#slide-5 .card p {
+  font-size: 22px;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ========================================
+   SLIDE 6: 깨어있는 시민 - 대형 타이포
+   ======================================== */
+#slide-6 {
+  background: var(--pure-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 85px;
+}
+
+#slide-6 .typo-block {
+  margin-bottom: 80px;
+}
+
+#slide-6 .t-sm {
+  font-family: var(--title);
+  font-size: 44px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+}
+
+#slide-6 .t-lg {
+  font-family: var(--title);
+  font-size: 100px;
+  color: var(--electric-yellow);
+  line-height: 1.15;
+  letter-spacing: -2px;
+}
+
+#slide-6 .t-md {
+  font-family: var(--title);
+  font-size: 80px;
+  color: #fff;
+  line-height: 1.15;
+}
+
+#slide-6 .democracy-stages {
+  border-top: 4px solid rgba(255, 235, 59, 0.3);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+#slide-6 .stage {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+#slide-6 .stage-num {
+  font-family: var(--number);
+  font-weight: 900;
+  font-size: 36px;
+  color: var(--hot-orange);
+  flex-shrink: 0;
+  width: 50px;
+}
+
+#slide-6 .stage-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+/* ========================================
+   SLIDE 7: 간극 - 반반 분할
+   ======================================== */
+#slide-7 {
+  display: flex;
+}
+
+#slide-7 .left {
+  width: 50%;
+  height: 100%;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 50px;
+}
+
+#slide-7 .right {
+  width: 50%;
+  height: 100%;
+  background: var(--pure-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 50px;
+}
+
+#slide-7 .split-title {
+  font-family: var(--title);
+  font-size: 46px;
+  margin-bottom: 50px;
+  line-height: 1.3;
+}
+#slide-7 .left .split-title { color: var(--deep-charcoal); }
+#slide-7 .right .split-title { color: #fff; }
+
+#slide-7 .split-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#slide-7 .split-list li {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.6;
+  padding-left: 24px;
+  position: relative;
+}
+#slide-7 .left .split-list li {
+  color: var(--deep-charcoal);
+  border-left: 5px solid var(--neon-mint);
+  padding-left: 20px;
+}
+#slide-7 .right .split-list li {
+  color: rgba(255, 255, 255, 0.85);
+  border-left: 5px solid var(--hot-orange);
+  padding-left: 20px;
+}
+
+#slide-7 .split-list .year-tag {
+  font-family: var(--number);
+  font-weight: 800;
+  font-size: 18px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+#slide-7 .left .year-tag { color: var(--neon-mint); }
+#slide-7 .right .year-tag { color: var(--hot-orange); }
+
+#slide-7 .center-divider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: var(--electric-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--title);
+  font-size: 32px;
+  color: var(--pure-black);
+  z-index: 10;
+}
+
+/* ========================================
+   SLIDE 8: 리프레임 - 오렌지 배경
+   ======================================== */
+#slide-8 {
+  background: var(--hot-orange);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px 80px;
+}
+
+#slide-8 .line-dark {
+  font-family: var(--title);
+  font-size: 68px;
+  color: var(--pure-black);
+  line-height: 1.35;
+  margin-bottom: 60px;
+  word-break: keep-all;
+}
+
+#slide-8 .line-white {
+  font-family: var(--title);
+  font-size: 96px;
+  color: #fff;
+  line-height: 1.25;
+  word-break: keep-all;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+#slide-8 .divider {
+  width: 120px;
+  height: 6px;
+  background: var(--pure-black);
+  margin: 50px 0;
+  opacity: 0.3;
+}
+
+/* ========================================
+   SLIDE 9: 하나의 행동
+   ======================================== */
+#slide-9 {
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px 90px;
+}
+
+#slide-9 .action-lead {
+  font-size: 32px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 50px;
+}
+
+#slide-9 .action-main {
+  font-family: var(--title);
+  font-size: 72px;
+  color: var(--deep-charcoal);
+  line-height: 1.4;
+  margin-bottom: 20px;
+  word-break: keep-all;
+}
+
+#slide-9 .action-highlight {
+  font-family: var(--title);
+  font-size: 84px;
+  color: var(--deep-charcoal);
+  line-height: 1.3;
+  display: inline;
+  border-bottom: 12px solid var(--hot-orange);
+  padding-bottom: 6px;
+  word-break: keep-all;
+}
+
+#slide-9 .action-sub {
+  margin-top: 80px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #aaa;
+  line-height: 1.7;
+}
+
+/* ========================================
+   SLIDE 10: 마무리 - 사람 사는 세상
+   ======================================== */
+#slide-10 {
+  background: var(--pure-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px 80px;
+}
+
+#slide-10 .final-text {
+  font-family: var(--title);
+  font-size: 130px;
+  color: var(--electric-yellow);
+  letter-spacing: 4px;
+  line-height: 1.3;
+  margin-bottom: 50px;
+}
+
+#slide-10 .final-dash {
+  width: 80px;
+  height: 5px;
+  background: rgba(255, 235, 59, 0.4);
+  margin-bottom: 40px;
+}
+
+#slide-10 .final-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 6px;
+}
+
+#slide-10 .final-foundation {
+  position: absolute;
+  bottom: 60px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 2px;
+  font-weight: 400;
 }
 </style>
 </head>
 <body>
 
-<!-- SLIDE 1: 표지 -->
-<div class="slide grain" id="slide-1">
-  <div class="diagonal-accent"></div>
-  <div class="corner-frame tl"></div>
-  <div class="corner-frame br"></div>
-  <div class="top-line"></div>
-  <div class="main-title">다시 보는<br><span class="highlight">노무현</span> 정신</div>
-  <div class="sub-title">혐오와 차별을 넘어</div>
-  <div class="divider-bar"></div>
-  <div class="foundation">노무현재단 2026 콘텐츠랩</div>
-</div>
+<!-- SLIDE 1: HOOK - 이 말, 오늘도 봤죠? -->
+<div class="slide" id="slide-1">
+  <span class="hate" style="top:45px; left:60px; font-size:28px; transform:rotate(-3deg);">여자가 무슨 운전을</span>
+  <span class="hate bright" style="top:80px; left:520px; font-size:44px; transform:rotate(2deg);">틀딱충</span>
+  <span class="hate dim" style="top:50px; right:80px; font-size:22px; transform:rotate(-5deg);">다문화 꺼져</span>
+  <span class="hate orange" style="top:175px; left:80px; font-size:50px; transform:rotate(1.5deg);">한남충</span>
+  <span class="hate" style="top:200px; right:100px; font-size:30px; transform:rotate(-2deg);">급식충이 뭘 알아</span>
+  <span class="hate yellow" style="top:290px; left:350px; font-size:38px; transform:rotate(-1deg);">맘충들 카페 점령 ㅋ</span>
+  <span class="hate dim" style="top:310px; right:50px; font-size:24px; transform:rotate(4deg);">페미나치</span>
+  <span class="hate bright" style="top:380px; left:50px; font-size:34px; transform:rotate(3deg);">장애인이면 집에나 있어</span>
+  <span class="hate" style="top:410px; right:130px; font-size:46px; transform:rotate(-2.5deg);">김치녀</span>
+  <span class="hate orange" style="top:480px; left:300px; font-size:26px; transform:rotate(1deg);">이주노동자 다 보내</span>
+  <span class="hate dim" style="top:520px; left:30px; font-size:20px; transform:rotate(-4deg);">전라도는 답이 없다</span>
+  <span class="hate yellow" style="top:550px; right:60px; font-size:36px; transform:rotate(2.5deg);">좌빨</span>
+  <span class="hate" style="top:610px; left:150px; font-size:42px; transform:rotate(-1.5deg);">냄저</span>
+  <span class="hate bright" style="top:630px; right:200px; font-size:28px; transform:rotate(3.5deg);">무슬림 노노</span>
+  <span class="hate dim" style="top:700px; left:500px; font-size:32px; transform:rotate(-3deg);">노인충</span>
+  <span class="hate" style="top:700px; left:60px; font-size:24px; transform:rotate(2deg);">경상도 것들</span>
+  <span class="hate orange" style="top:770px; right:80px; font-size:40px; transform:rotate(-1deg);">외노자</span>
+  <span class="hate bright" style="top:790px; left:250px; font-size:22px; transform:rotate(4deg);">조선족 ㅋㅋ</span>
+  <span class="hate dim" style="top:850px; left:50px; font-size:36px; transform:rotate(-2deg);">똥남아</span>
+  <span class="hate yellow" style="top:860px; right:170px; font-size:26px; transform:rotate(1.5deg);">거지충</span>
+  <span class="hate" style="top:920px; left:200px; font-size:30px; transform:rotate(-2deg);">중국인 냄새</span>
+  <span class="hate bright" style="top:940px; right:120px; font-size:22px; transform:rotate(3deg);">여성 징병해</span>
+  <span class="hate dim" style="top:990px; left:50px; font-size:26px; transform:rotate(1deg);">세금 도둑</span>
+  <span class="hate orange" style="top:1000px; left:500px; font-size:34px; transform:rotate(-1.5deg);">충</span>
+  <span class="hate" style="top:1020px; right:70px; font-size:20px; transform:rotate(2.5deg);">나라 망한다</span>
 
-<!-- SLIDE 2: 인권변호사 노무현 -->
-<div class="slide" id="slide-2">
-  <div class="accent-strip"></div>
-  <div class="year-watermark">1981</div>
-  <div class="content">
-    <div class="tag">인권의 시작</div>
-    <div class="title">인권변호사,<br>노무현</div>
-    <div class="desc">
-      부림사건 변론으로<br>
-      인권변호사의 길을 걷기 시작하다
-    </div>
-    <div class="context-box">
-      <h4>부림사건이란?</h4>
-      <p>1981년 전두환 정권이 부산 지역 대학생과 재야인사 22명을 국가보안법 위반 혐의로 불법 구금·고문한 사건입니다.</p>
-      <p>노무현 변호사는 고문 피해자들을 변론하며 국가권력의 부당함에 맞섰고, 이 사건을 계기로 인권변호사로서의 소명을 깨달았습니다.</p>
-    </div>
-    <div class="quote-block">
-      <p>"사람이 사람답게<br>사는 세상을 꿈꾸며"</p>
-      <div class="watermark">&#9878;</div>
-    </div>
+  <div class="hook-box">
+    <p>이 말, 오늘도 봤죠?</p>
   </div>
+  <div class="hook-sub">스크롤 한 번에 쏟아지는 혐오</div>
 </div>
 
-<!-- SLIDE 3: 핵심 명언 -->
+<!-- SLIDE 2: 현실 - 6배 증가 -->
+<div class="slide" id="slide-2">
+  <div class="big-number">6X</div>
+  <div class="stat-label">5년간 온라인 혐오 증가율</div>
+  <div class="stat-sub">10명 중 8명 <span class="hl">"심각하다"</span></div>
+  <div class="source">2021 국가인권위원회 온라인 혐오표현 인식조사</div>
+</div>
+
+<!-- SLIDE 3: 전환점 -->
 <div class="slide" id="slide-3">
-  <div class="deco-corner tr"></div>
-  <div class="deco-corner bl"></div>
-  <div class="quote-mark">&#10077;</div>
-  <div class="quote-text">
-    특권이 없는 사회도 중요하지만,<br>
+  <div class="line1">25년 전,</div>
+  <div class="line2">이 싸움을<br>먼저 시작한<br>사람이 있었다</div>
+</div>
+
+<!-- SLIDE 4: 핵심 명언 -->
+<div class="slide" id="slide-4">
+  <div class="left-bar"></div>
+  <div class="quote">
+    특권이 없는 사회도<br>
+    중요하지만,<br>
     차별이 없는 사회는<br>
     더 중요하다.
   </div>
-  <div class="divider"></div>
-  <div class="source">&#8212; 노무현 대통령, 2002. 11. 25</div>
+  <div class="quote-source">노무현, 2002. 11. 25</div>
 </div>
 
-<!-- SLIDE 4: 차별 없는 나라를 꿈꾸다 -->
-<div class="slide" id="slide-4">
-  <div class="header">
-    <div class="accent-bar"></div>
-    <div class="title">차별 없는 나라를<br>꿈꾸다</div>
-    <div class="subtitle">노무현 정부의 인권 정책 성과</div>
-  </div>
+<!-- SLIDE 5: 업적 - 말만 한 게 아니다 -->
+<div class="slide" id="slide-5">
+  <div class="section-title"><span class="hl">말만 한 게 아니다.</span><br>바꿨다.</div>
   <div class="cards">
     <div class="card">
-      <div class="icon-wrap">&#127963;</div>
-      <div class="text">
-        <span class="year-badge">2001</span>
-        <h3>국가인권위원회 출범</h3>
-        <p>독립적 인권 전담 국가기구를 설립하여<br>인권 보호의 제도적 기반을 마련</p>
-      </div>
+      <div class="year">2005</div>
+      <h3>호주제 폐지</h3>
+      <p>가부장적 가족제도의 법적 근간을 해체하다</p>
     </div>
     <div class="card">
-      <div class="icon-wrap">&#128203;</div>
-      <div class="text">
-        <span class="year-badge">2007</span>
-        <h3>차별금지법 논의 시작</h3>
-        <p>성별, 장애, 나이, 출신 등을 이유로 한<br>차별을 금지하는 법안 추진</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="icon-wrap">&#129309;</div>
-      <div class="text">
-        <span class="year-badge">2003~</span>
-        <h3>사회적 소수자 보호 정책</h3>
-        <p>비정규직 보호법, 장애인 차별금지,<br>양성평등 정책의 토대를 놓다</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 5: 다문화사회의 문을 열다 -->
-<div class="slide" id="slide-5">
-  <div class="top-accent"></div>
-  <div class="title">다문화사회의<br>문을 열다</div>
-  <div class="subtitle">이주민과 함께하는 사회를 향한 정책</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="dot"></div>
       <div class="year">2003</div>
-      <div class="text">
-        <h3>고용허가제 도입</h3>
-        <p>외국인 근로자의 합법적 취업과<br>인권 보호를 위한 제도적 기틀 마련</p>
-      </div>
+      <h3>고용허가제 도입</h3>
+      <p>'연수생'이 아닌 '노동자'로, 이주민의 권리를 인정하다</p>
     </div>
-    <div class="timeline-item">
-      <div class="dot"></div>
-      <div class="year">2006</div>
-      <div class="text">
-        <h3>다문화가정지원 국정과제회의</h3>
-        <p>다문화가정 지원을 국가 핵심<br>과제로 격상하여 체계적 정책 추진</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="dot"></div>
+    <div class="card">
       <div class="year">2007</div>
-      <div class="text">
-        <h3>재한외국인처우기본법 제정</h3>
-        <p>한국에 거주하는 외국인의 기본권과<br>사회통합을 위한 법적 근거 확립</p>
-      </div>
-    </div>
-  </div>
-  <div class="timeline-footer">
-    <p>"이주민도 우리 사회의 동등한 구성원입니다"</p>
-  </div>
-</div>
-
-<!-- SLIDE 6: 민주주의의 핵심 가치 -->
-<div class="slide grain" id="slide-6">
-  <div class="section-label">민주주의의 핵심 가치</div>
-  <div class="values-grid">
-    <div class="value-card">
-      <div class="v-icon">&#128172;</div>
-      <div class="v-label">대화</div>
-    </div>
-    <div class="value-card">
-      <div class="v-icon">&#129309;</div>
-      <div class="v-label">타협</div>
-    </div>
-    <div class="value-card">
-      <div class="v-icon">&#128156;</div>
-      <div class="v-label">관용</div>
-    </div>
-    <div class="value-card">
-      <div class="v-icon">&#127760;</div>
-      <div class="v-label">통합</div>
-    </div>
-  </div>
-  <div class="bottom-quote">
-    <p><strong>"깨어 있는 시민의 조직된 힘"</strong>이<br>민주주의를 지킵니다</p>
-  </div>
-</div>
-
-<!-- SLIDE 7: 지금, 우리 사회의 현실 -->
-<div class="slide grain" id="slide-7">
-  <div class="warning-tag">&#9888; 현실 직시</div>
-  <div class="title">지금, 우리 사회의<br><span class="red">현실</span></div>
-  <div class="stats">
-    <div class="stat-card">
-      <div class="label">온라인 혐오 발언</div>
-      <div class="value">5년간 300% 증가</div>
-      <div class="bar-track">
-        <div class="bar-fill" style="width: 85%;"></div>
-      </div>
-      <div class="desc">소셜미디어와 온라인 커뮤니티에서의 혐오 표현이 급증</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">차별 경험률</div>
-      <div class="value">국민 5명 중 1명</div>
-      <div class="people-row">
-        <div class="person hit">&#128100;</div>
-        <div class="person miss">&#128100;</div>
-        <div class="person miss">&#128100;</div>
-        <div class="person miss">&#128100;</div>
-        <div class="person miss">&#128100;</div>
-      </div>
-      <div class="desc">성별, 나이, 지역, 학력 등을 이유로 차별을 경험</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">혐오범죄 신고</div>
-      <div class="value">매년 증가 추세 &#8593;</div>
-      <div class="bar-track">
-        <div class="bar-fill" style="width: 65%;"></div>
-      </div>
-      <div class="desc">혐오에 기반한 범죄와 폭력이 사회 전반으로 확산</div>
+      <h3>장애인차별금지법</h3>
+      <p>장애를 이유로 한 모든 차별을 법으로 금지하다</p>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 8: 왜 지금 다시 노무현인가 -->
+<!-- SLIDE 6: 깨어있는 시민의 조직된 힘 -->
+<div class="slide" id="slide-6">
+  <div class="typo-block">
+    <div class="t-sm">민주주의 최후의 보루는</div>
+    <div class="t-lg">깨어 있는 시민의</div>
+    <div class="t-md">조직된 힘입니다</div>
+  </div>
+  <div class="democracy-stages">
+    <div class="stage">
+      <div class="stage-num">01</div>
+      <div class="stage-text">규범 위의 권력을 규범 아래로</div>
+    </div>
+    <div class="stage">
+      <div class="stage-num">02</div>
+      <div class="stage-text">반칙과 특권 없이, 실력으로 경쟁하는 사회</div>
+    </div>
+    <div class="stage">
+      <div class="stage-num">03</div>
+      <div class="stage-text">대화와 타협, 상생의 성숙한 민주주의</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: 간극 - 반반 분할 -->
+<div class="slide" id="slide-7">
+  <div class="left">
+    <div class="split-title">그가<br>기초를 놓았다</div>
+    <ul class="split-list">
+      <li>
+        <span class="year-tag">2005</span><br>
+        호주제 폐지로 양성평등 기반 마련
+      </li>
+      <li>
+        <span class="year-tag">2003</span><br>
+        고용허가제로 이주민 인권 보장
+      </li>
+      <li>
+        <span class="year-tag">2007</span><br>
+        장애인차별금지법 제정
+      </li>
+      <li>
+        <span class="year-tag">2004</span><br>
+        차별금지법 초안 마련
+      </li>
+    </ul>
+  </div>
+  <div class="right">
+    <div class="split-title">우리가<br>금을 냈다</div>
+    <ul class="split-list">
+      <li>
+        <span class="year-tag">2026</span><br>
+        온라인 혐오 표현 6배 증가
+      </li>
+      <li>
+        <span class="year-tag">20년째</span><br>
+        차별금지법, 여전히 국회 표류 중
+      </li>
+      <li>
+        <span class="year-tag">매일</span><br>
+        댓글창의 혐오가 놀이가 된 시대
+      </li>
+      <li>
+        <span class="year-tag">10명 중 8명</span><br>
+        심각하다고 느끼지만 침묵하는 사회
+      </li>
+    </ul>
+  </div>
+  <div class="center-divider">VS</div>
+</div>
+
+<!-- SLIDE 8: 리프레임 -->
 <div class="slide" id="slide-8">
-  <div class="title">왜 지금 다시<br>노무현인가</div>
-  <div class="comparison">
-    <div class="col problem">
-      <div class="icon">&#9888;</div>
-      <h3>혐오와 차별이<br>일상이 된 시대</h3>
-      <div class="items">
-        <p>온라인 혐오 표현의 일상화</p>
-        <p>소수자에 대한 편견 확산</p>
-        <p>세대·성별·지역 갈등 심화</p>
-        <p>공론장의 붕괴와 극단화</p>
-      </div>
-    </div>
-    <div class="arrow-mid">&#10132;</div>
-    <div class="col solution">
-      <div class="icon">&#9728;</div>
-      <h3>관용과 통합의 정신이<br>더욱 필요한 때</h3>
-      <div class="items">
-        <p>대화와 타협의 정치 문화</p>
-        <p>다양성을 인정하는 사회</p>
-        <p>차별 없는 제도적 기반</p>
-        <p>시민이 주인인 민주주의</p>
-      </div>
-    </div>
-  </div>
+  <div class="line-dark">이건 노무현의<br>이야기가 아니다</div>
+  <div class="divider"></div>
+  <div class="line-white">당신의<br>이야기다</div>
 </div>
 
-<!-- SLIDE 9: 우리가 만드는 변화 -->
+<!-- SLIDE 9: 하나의 행동 -->
 <div class="slide" id="slide-9">
-  <div class="header">
-    <div class="accent-bar"></div>
-    <div class="title">우리가 만드는 변화</div>
-    <div class="subtitle">지금 우리가 실천할 수 있는 것들</div>
-  </div>
-  <div class="actions">
-    <div class="action-row">
-      <div class="num">1</div>
-      <div class="action-icons">
-        <span>&#128263;</span>
-        <span class="arrow">&#10132;</span>
-        <span>&#128227;</span>
-      </div>
-      <div class="text">
-        <h3>혐오 표현에 침묵하지 않기</h3>
-        <p>일상 속 혐오와 차별에 목소리를 내고,<br>피해자의 편에 서는 용기를 갖기</p>
-      </div>
-      <div class="check">&#10003;</div>
-    </div>
-    <div class="action-row">
-      <div class="num">2</div>
-      <div class="action-icons">
-        <span>&#127758;</span>
-      </div>
-      <div class="text">
-        <h3>다양성을 존중하기</h3>
-        <p>나와 다른 배경, 문화, 생각을 가진<br>사람들을 이해하고 존중하기</p>
-      </div>
-      <div class="check">&#10003;</div>
-    </div>
-    <div class="action-row">
-      <div class="num">3</div>
-      <div class="action-icons">
-        <span>&#9994;</span>
-      </div>
-      <div class="text">
-        <h3>시민의 조직된 힘으로 행동하기</h3>
-        <p>차별금지법 제정, 인권 교육 확대 등<br>제도적 변화를 위해 함께 참여하기</p>
-      </div>
-      <div class="check">&#10003;</div>
-    </div>
-  </div>
-  <div class="cta-box">
-    <p>작은 실천이 모여 큰 변화를 만듭니다.<br>우리 모두가 노무현 정신을 이어가는 시민입니다.</p>
-  </div>
+  <div class="action-lead">거창한 실천 목록 따위 없다</div>
+  <div class="action-main">내일, 혐오 댓글을 보면</div>
+  <div class="action-highlight">침묵하지 마세요</div>
+  <div class="action-sub">그것이 노무현이 말한<br>"깨어 있는 시민"의 시작입니다</div>
 </div>
 
 <!-- SLIDE 10: 마무리 -->
-<div class="slide grain" id="slide-10">
-  <div class="bg-char">사람</div>
-  <div class="corner tl"></div>
-  <div class="corner tr"></div>
-  <div class="corner bl"></div>
-  <div class="corner br"></div>
-  <div class="top-line"></div>
-  <div class="slogan">사람 사는 세상</div>
-  <div class="sub">노무현이 꿈꾼,<br>우리가 만들어갈 세상</div>
-  <div class="sep-line"></div>
-  <div class="info">노무현재단 | www.knowhow.or.kr</div>
-  <div class="hashtags">#노무현재단 #콘텐츠랩 #혐오를넘어 #사람사는세상</div>
-  <div class="bottom-accent"></div>
+<div class="slide" id="slide-10">
+  <div class="final-text">사람 사는<br>세상</div>
+  <div class="final-dash"></div>
+  <div class="final-name">노무현</div>
+  <div class="final-foundation">노무현재단 2026 콘텐츠랩</div>
 </div>
 
 </body>
